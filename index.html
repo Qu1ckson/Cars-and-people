@@ -32,8 +32,12 @@
 			car.setAttribute( "occupiedSeats", count );
 		  }
 		  var seats = dropElem.getAttribute( "occupiedSeats" );
-		  dragObject.elem.classList.add('inside');
 		  seats++;
+		  if( seats > 5 )
+			dragObject.elem.classList.add('insideFull');
+		  else
+			dragObject.elem.classList.add('inside');
+		  
 		  dropElem.setAttribute( "occupiedSeats", seats );
 		  dragObject.elem.setAttribute("whichCar", dropElem.id);
 		};
@@ -43,8 +47,8 @@
 	<body>
 
 	<input type="file" id="files" name="files[]" onchange="handleFileSelect(event)" multiple />
+	<button onclick="handleAddImg()">Добавить</button>
 	<output id="list"></output>
-
 	<div id="dragObjects">
 		<!-- <img src="img/people/bread.png" class="draggable" id="human" whichCar=""/> -->
 	</div >

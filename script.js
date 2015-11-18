@@ -1,3 +1,11 @@
+var LastImg = {};
+
+function handleAddImg(){
+	var divDragObjects = document.getElementById('dragObjects');
+	divDragObjects.innerHTML += ['<img class="draggable" src="', LastImg.src,
+					'" id="', LastImg.id, '" whichCar=\"\"/>'].join('');
+	document.getElementById('list').insertBefore(divDragObjects, null);
+}
 function handleFileSelect(evt) {
 	var files = evt.target.files; // FileList object
 
@@ -16,10 +24,11 @@ function handleFileSelect(evt) {
 		return function(e) {
 		  // Render thumbnail.
 		  var divDragObjects = document.getElementById('dragObjects');
-		  
-		  divDragObjects.innerHTML += ['<img class="draggable" src="', e.target.result,
-							'" id="', escape(theFile.name), '" whichCar=\"\"/>'].join('');
-		  document.getElementById('list').insertBefore(divDragObjects, null);
+		  LastImg.src = e.target.result;
+		  LastImg.id = theFile.name;
+		  //divDragObjects.innerHTML += ['<img class="draggable" src="', e.target.result,
+		//					'" id="', escape(theFile.name), '" whichCar=\"\"/>'].join('');
+		  //document.getElementById('list').insertBefore(divDragObjects, null);
 		};
 	  })(f);
 
