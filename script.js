@@ -6,6 +6,25 @@ function handleAddImg(){
 					'" id="', LastImg.id, '" whichCar=\"\"/>'].join('');
 	document.getElementById('list').insertBefore(divDragObjects, null);
 }
+
+function handlerLeavePeople( carId ){
+	var car = document.getElementById( carId );
+	var count = car.getAttribute( "occupiedSeats" );
+	
+	var people = document.getElementsByClassName('draggable');
+
+	for( var i = 0; i < people.length; i++ )
+	{
+		if( people[i].getAttribute( "whichCar" ) == carId )
+			if(people[i].className.indexOf( "insideFull" ) > -1)
+			{
+				people[i].classList.remove('insideFull');
+				people[i].classList.add('inside');
+				return;
+			}
+	}
+}
+
 function handleFileSelect(evt) {
 	var files = evt.target.files; // FileList object
 

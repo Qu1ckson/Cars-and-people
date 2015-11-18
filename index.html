@@ -17,6 +17,8 @@
 			count--;
 			car.setAttribute( "occupiedSeats", count );
 			dragObject.elem.classList.remove('inside');
+			dragObject.elem.classList.remove('insideFull');
+			handlerLeavePeople( carId );
 		};
 
 		DragManager.onDragEnd = function(dragObject, dropElem) {
@@ -30,6 +32,7 @@
 			count--;
 			dragObject.elem.classList.remove('inside');
 			car.setAttribute( "occupiedSeats", count );
+			handlerLeavePeople( carId );
 		  }
 		  var seats = dropElem.getAttribute( "occupiedSeats" );
 		  seats++;
@@ -48,9 +51,10 @@
 
 	<input type="file" id="files" name="files[]" onchange="handleFileSelect(event)" multiple />
 	<button onclick="handleAddImg()">Добавить</button>
-	<output id="list"></output>
+	
 	<div id="dragObjects">
 		<!-- <img src="img/people/bread.png" class="draggable" id="human" whichCar=""/> -->
+		<output id="list"></output>
 	</div >
 	<img src="img/car/car 2.png" id="carOne" class="droppable" occupiedSeats="0"/>
 	<img src="img/car/car.jpg" id="carTwo" class="droppable" occupiedSeats="0"/>
