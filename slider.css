@@ -14,3 +14,61 @@
 {
 	border: 3px solid #FF0D00;
 }
+
+#seat1 {
+	position: absolute;
+	top:370px;
+	left:110px;
+ }
+ #seat2 {
+	position: absolute;
+	top:370px;
+	left:230px;
+ }
+ #seat3 {
+	position: absolute;
+	top:510px;
+	left:110px;
+ }
+ #seat4 {
+	position: absolute;
+	top:510px;
+	left:230px;
+ }
+ 
+ #seat21 {
+	position: absolute;
+	top:370px;
+	left:530px;
+ }
+ #seat22 {
+	position: absolute;
+	top:370px;
+	left:660px;
+ }
+ #seat23 {
+	position: absolute;
+	top:510px;
+	left:540px;
+ }
+ #seat24 {
+	position: absolute;
+	top:510px;
+	left:650px;
+ }
+  .blockPeople { 
+    width: 390px; 
+	position: absolute; 
+	right:0px;
+   }
+   
+ .inpuStyle { 
+	width: 220px;
+	position: absolute; 
+	left: 70px;
+}
+
+input.wrong{
+    background: #ffd9d9;
+    border-color:#d3adad;
+}

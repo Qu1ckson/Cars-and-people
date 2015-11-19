@@ -1,10 +1,69 @@
 var LastImg = {};
 
 function handleAddImg(){
+	if( !checkFillField() )
+		return;
 	var divDragObjects = document.getElementById('dragObjects');
-	divDragObjects.innerHTML += ['<img class="draggable" src="', LastImg.src,
-					'" id="', LastImg.id, '" whichCar=\"\"/>'].join('');
+	divDragObjects.innerHTML += ['<img class="draggable"'+formHint()+ 'src="'+ LastImg.src+
+					'" id="'+ LastImg.id+ '" whichCar=\"\"/>'].join('');
+	clearField();
 	document.getElementById('list').insertBefore(divDragObjects, null);
+}
+
+function handleOnChange( field ){
+	field.classList.remove('wrong');
+}
+
+function clearField( field ){
+	var firstName = document.getElementById('firstName');
+	var lastName = document.getElementById('lastName');
+	var selectFile = document.getElementById('files');
+	firstName.value = "";
+	lastName.value = "";
+	selectFile.result = "";
+}
+
+function formHint(){
+	//return "onmouseover=\"toolTip('" + LastImg.firstName + "<br>" + LastImg.lastName + "<br>')\"onmouseout=\"toolTip()\""; 
+	var tmp = "title=\"" +LastImg.firstName + "\n" + LastImg.lastName + "\"";
+	return tmp;
+}
+
+function onKeyUpEvent(event, input)
+{
+	if( input.value == "" )
+		return;
+	var regular = new RegExp("^[À-ß¨][à-ÿ¸]*$"); 
+	if (!regular.test(input.value)) { 
+		input.value = input.value.substring(0, event.currentTarget.selectionEnd-1); 
+		input.value += input.value.substring(event.currentTarget.selectionEnd+1,input.value.length ); 
+		return; 
+	} 
+}
+
+function checkFillField(){
+	var isOk = true;
+	
+	if( LastImg.src === undefined ){
+		isOk = false;
+		var selectFile = document.getElementById('files');
+		selectFile.classList.add('wrong');
+	}
+	var firstName = document.getElementById('firstName');
+	var lastName = document.getElementById('lastName');
+	if( firstName.value == "" ){
+		isOk = false;
+		firstName.classList.add('wrong');
+	}
+	else 
+		LastImg.firstName = firstName.value;
+	if( lastName.value == "" ){
+		isOk = false;
+		lastName.classList.add('wrong');
+	}
+	else
+		LastImg.lastName = lastName.value;
+	return isOk;
 }
 
 function handlerLeavePeople( carId ){
@@ -27,7 +86,7 @@ function handlerLeavePeople( carId ){
 
 function handleFileSelect(evt) {
 	var files = evt.target.files; // FileList object
-
+	document.getElementById('files').classList.remove('wrong');
 	// Loop through the FileList and render image files as thumbnails.
 	for (var i = 0, f; f = files[i]; i++) {
 
@@ -45,9 +104,6 @@ function handleFileSelect(evt) {
 		  var divDragObjects = document.getElementById('dragObjects');
 		  LastImg.src = e.target.result;
 		  LastImg.id = theFile.name;
-		  //divDragObjects.innerHTML += ['<img class="draggable" src="', e.target.result,
-		//					'" id="', escape(theFile.name), '" whichCar=\"\"/>'].join('');
-		  //document.getElementById('list').insertBefore(divDragObjects, null);
 		};
 	  })(f);
 

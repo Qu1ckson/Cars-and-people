@@ -48,15 +48,30 @@
 		<link href="slider.css" rel="stylesheet">
 	</head>
 	<body>
-
-	<input type="file" id="files" name="files[]" onchange="handleFileSelect(event)" multiple />
-	<button onclick="handleAddImg()">Добавить</button>
-	
-	<div id="dragObjects">
-		<!-- <img src="img/people/bread.png" class="draggable" id="human" whichCar=""/> -->
-		<output id="list"></output>
-	</div >
-	<img src="img/car/car 2.png" id="carOne" class="droppable" occupiedSeats="0"/>
-	<img src="img/car/car.jpg" id="carTwo" class="droppable" occupiedSeats="0"/>
+	<div>
+		<div style="position: absolute;">
+			<img src="img/car/car 2.png" id="carOne" occupiedSeats="0"/>
+			<img id="seat1" src="img/seat.png" class="droppable"/>
+			<img id="seat2" src="img/seat.png" class="droppable"/>
+			<img id="seat3" src="img/seat.png" class="droppable"/>
+			<img id="seat4" src="img/seat.png" class="droppable"/>
+			<img src="img/car/car.jpg" id="carTwo" occupiedSeats="0"/>
+			<img id="seat21" src="img/seat.png" class="droppable"/>
+			<img id="seat22" src="img/seat.png" class="droppable"/>
+			<img id="seat23" src="img/seat.png" class="droppable"/>
+			<img id="seat24" src="img/seat.png" class="droppable"/>
+		</div>
+	</div>
+	<div class="blockPeople">
+		
+		<p>Имя <input id="firstName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeyup="onKeyUpEvent(event,this)" value=""/></p>
+		<p>Фамилия <input id="lastName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeyup="onKeyUpEvent(event,this)" value=""/></p>
+		<p>Картинка <input type="file" id="files" name="files[]" onchange="handleFileSelect(event)" multiple /></p>
+		<button style="position:absolute; left:220px" onclick="handleAddImg()">Добавить</button>
+		 <div id="floatTip"></div>
+		<div id="dragObjects">
+			<output id="list"></output>
+		</div>
+	</div>
 	</body>
 </html>
