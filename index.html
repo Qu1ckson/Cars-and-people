@@ -45,7 +45,7 @@
 		  dragObject.elem.setAttribute("whichCar", dropElem.id);
 		};
 		</script>
-		<link href="slider.css" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
 	</head>
 	<body>
 	<div>
@@ -64,8 +64,8 @@
 	</div>
 	<div class="blockPeople">
 		
-		<p>Имя <input id="firstName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeyup="onKeyUpEvent(event,this)" value=""/></p>
-		<p>Фамилия <input id="lastName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeyup="onKeyUpEvent(event,this)" value=""/></p>
+		<p>Имя <input id="firstName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeypress="return onKeyPressEvent(event,this)" value=""/></p>
+		<p>Фамилия <input id="lastName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeypress="return onKeyPressEvent(event,this)" value=""/></p>
 		<p>Картинка <input type="file" id="files" name="files[]" onchange="handleFileSelect(event)" multiple /></p>
 		<button style="position:absolute; left:220px" onclick="handleAddImg()">Добавить</button>
 		 <div id="floatTip"></div>

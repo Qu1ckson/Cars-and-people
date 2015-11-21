@@ -29,16 +29,24 @@ function formHint(){
 	return tmp;
 }
 
-function onKeyUpEvent(event, input)
+function onKeyPressEvent(event, input)
 {
+	var symbol = String.fromCharCode(event.keyCode);
 	if( input.value == "" )
-		return;
+	{
+		var regular = new RegExp("[À-ß¨]"); 
+		if (regular.test(symbol))
+			return true;
+		else false;
+	}
+	var tmp_str = input.value.substring( 0,event.currentTarget.selectionStart );
+	tmp_str += symbol;
+	tmp_str += input.value.substring( event.currentTarget.selectionStart,input.value.length );
 	var regular = new RegExp("^[À-ß¨][à-ÿ¸]*$"); 
-	if (!regular.test(input.value)) { 
-		input.value = input.value.substring(0, event.currentTarget.selectionEnd-1); 
-		input.value += input.value.substring(event.currentTarget.selectionEnd+1,input.value.length ); 
-		return; 
+	if (!regular.test(tmp_str)) { 
+		return false; 
 	} 
+	return true;
 }
 
 function checkFillField(){
