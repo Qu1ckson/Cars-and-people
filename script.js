@@ -32,7 +32,7 @@ function formHint(){
 function onPaste(event, input)
 {	
 	var val = event.clipboardData.getData('Text');
-	return  (/^[À-ß¨][à-ÿ¸]*$/.test(val));
+	return  (/^[À-ß¨][à-ÿ¸]*$|^[à-ÿ¸]*$/.test(val));
 }
 
 function onKeyPressEvent(event, input)
