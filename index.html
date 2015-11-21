@@ -64,8 +64,8 @@
 	</div>
 	<div class="blockPeople">
 		
-		<p>Имя <input id="firstName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeypress="return onKeyPressEvent(event,this)" value=""/></p>
-		<p>Фамилия <input id="lastName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onkeypress="return onKeyPressEvent(event,this)" value=""/></p>
+		<p>Имя <input id="firstName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onpaste="return onPaste(event, this)" onkeypress="return onKeyPressEvent(event,this)" value=""/></p>
+		<p>Фамилия <input id="lastName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onpaste="return onPa onkeypress="return onKeyPressEvent(event,this)" value=""/></p>
 		<p>Картинка <input type="file" id="files" name="files[]" onchange="handleFileSelect(event)" multiple /></p>
 		<button style="position:absolute; left:220px" onclick="handleAddImg()">Добавить</button>
 		 <div id="floatTip"></div>

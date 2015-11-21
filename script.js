@@ -29,6 +29,12 @@ function formHint(){
 	return tmp;
 }
 
+function onPaste(event, input)
+{	
+	var val = event.clipboardData.getData('Text');
+	return  (/^[À-ß¨][à-ÿ¸]*$/.test(val));
+}
+
 function onKeyPressEvent(event, input)
 {
 	var symbol = String.fromCharCode(event.keyCode);
