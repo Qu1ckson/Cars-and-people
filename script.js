@@ -7,7 +7,7 @@ function handleAddImg(){
 	divDragObjects.innerHTML += ['<img class="draggable"'+formHint()+ 'src="'+ LastImg.src+
 					'" id="'+ LastImg.id+ '" whichCar=\"\"/>'].join('');
 	clearField();
-	document.getElementById('list').insertBefore(divDragObjects, null);
+	document.getElementById('place').insertBefore(divDragObjects, null);
 }
 
 function handleOnChange( field ){
@@ -228,11 +228,9 @@ var DragManager = new function() {
 
     // функция для отмены переноса
     avatar.rollback = function() {
-      old.parent.insertBefore(avatar, old.nextSibling);
-      avatar.style.position = old.position;
-      avatar.style.left = old.left;
-      avatar.style.top = old.top;
-      avatar.style.zIndex = old.zIndex
+	  var place = document.getElementById('place');
+	  place.insertBefore(avatar, null);
+	  avatar.setAttribute("style","");
     };
 
     return avatar;
@@ -240,7 +238,13 @@ var DragManager = new function() {
 
   function startDrag(e) {
     var avatar = dragObject.avatar;
-
+	
+	var seats = document.getElementsByClassName("droppable");
+	for( var i = 0; i < seats.length; i++ )
+	{
+		seats[i].style.opacity = 0.7;
+		//seats[i].classList.add('insideFull');
+	}
     // инициировать начало переноса
     document.body.appendChild(avatar);
     avatar.style.zIndex = 9999;
@@ -256,7 +260,12 @@ var DragManager = new function() {
 
     // показать переносимый элемент обратно
     dragObject.avatar.hidden = false;
-
+	var seats = document.getElementsByClassName("droppable");
+	for( var i = 0; i < seats.length; i++ )
+	{
+		seats[i].style.opacity = 0.0;
+		//seats[i].classList.remove('insideFull');
+	}
     if (elem == null) {
       // такое возможно, если курсор мыши "вылетел" за границу окна
       return null;

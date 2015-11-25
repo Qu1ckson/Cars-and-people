@@ -8,6 +8,9 @@
 		</style>
 		<script>
 		 DragManager.onDragCancel = function(dragObject) {
+			dragObject.elem.removeAttribute("class");
+			dragObject.elem.classList.add("draggable");
+			dragObject.avatar.rollback();
 			var carId = dragObject.elem.getAttribute("whichCar");
 			dragObject.elem.setAttribute("whichCar", "");
 			if( carId == "" )
@@ -23,8 +26,11 @@
 
 		DragManager.onDragEnd = function(dragObject, dropElem) {
 		  var carId = dragObject.elem.getAttribute("whichCar");
-		  if( carId == dropElem.id )
-			return;
+		  dragObject.elem.removeAttribute("class");
+		  dragObject.elem.classList.add("draggable");
+		  dragObject.elem.classList.add( dropElem.id );
+		  dragObject.elem.removeAttribute("style");
+		  document.getElementById("seats").appendChild( dragObject.elem );
 		  if( carId != "" )
 		  {
 			var car = document.getElementById(carId);
@@ -49,17 +55,17 @@
 	</head>
 	<body>
 	<div>
-		<div style="position: absolute;">
+		<div id="seats" style="position: absolute;">
 			<img src="img/car/car 2.png" id="carOne" occupiedSeats="0"/>
-			<img id="seat1" src="img/seat.png" class="droppable"/>
-			<img id="seat2" src="img/seat.png" class="droppable"/>
-			<img id="seat3" src="img/seat.png" class="droppable"/>
-			<img id="seat4" src="img/seat.png" class="droppable"/>
+			<img id="seat1" src="img/seat.png" class="droppable seat1"/>
+			<img id="seat2" src="img/seat.png" class="droppable seat2"/>
+			<img id="seat3" src="img/seat.png" class="droppable seat3"/>
+			<img id="seat4" src="img/seat.png" class="droppable seat4"/>
 			<img src="img/car/car.jpg" id="carTwo" occupiedSeats="0"/>
-			<img id="seat21" src="img/seat.png" class="droppable"/>
-			<img id="seat22" src="img/seat.png" class="droppable"/>
-			<img id="seat23" src="img/seat.png" class="droppable"/>
-			<img id="seat24" src="img/seat.png" class="droppable"/>
+			<img id="seat21" src="img/seat.png" class="droppable seat21"/>
+			<img id="seat22" src="img/seat.png" class="droppable seat22"/>
+			<img id="seat23" src="img/seat.png" class="droppable seat23"/>
+			<img id="seat24" src="img/seat.png" class="droppable seat24"/>
 		</div>
 	</div>
 	<div class="blockPeople">
@@ -68,10 +74,14 @@
 		<p>Фамилия <input id="lastName" class="inpuStyle" type="text" onchange="handleOnChange(this)" onpaste="return onPaste(event, this)"  onkeypress="return onKeyPressEvent(event,this)" value=""/></p>
 		<p>Картинка <input type="file" id="files" name="files[]" onchange="handleFileSelect(event)" multiple /></p>
 		<button style="position:absolute; left:220px" onclick="handleAddImg()">Добавить</button>
-		 <div id="floatTip"></div>
 		<div id="dragObjects">
 			<output id="list"></output>
 		</div>
-	</div>
+		<div id="place" style="position:absolute; top:140px;">
+			<img class="draggable" src="img/ship.jpg" id="ship1" whichcar="">
+			<img class="draggable" src="img/ship.jpg" id="ship2" whichcar="">
+			<img class="draggable" src="img/ship.jpg" id="ship3" whichcar="">
+			<img class="draggable" src="img/ship.jpg" id="ship4" whichcar="">
+		</div>
 	</body>
 </html>

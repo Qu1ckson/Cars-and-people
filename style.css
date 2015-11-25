@@ -1,6 +1,8 @@
-
+.droppable{
+	opacity: 0.0; 
+}
 .draggable {
-    height: 75px;
+    height: 60px;
     border: 1px solid #000;
     margin: 10px 5px 0 0;
 }
@@ -13,48 +15,49 @@
 .insideFull
 {
 	border: 3px solid #FF0D00;
+	outline: 2px solid #000;
 }
 
-#seat1 {
+.seat1 {
 	position: absolute;
 	top:370px;
 	left:110px;
  }
- #seat2 {
+ .seat2 {
 	position: absolute;
 	top:370px;
 	left:230px;
  }
- #seat3 {
+ .seat3 {
 	position: absolute;
 	top:510px;
 	left:110px;
  }
- #seat4 {
+ .seat4 {
 	position: absolute;
 	top:510px;
 	left:230px;
  }
  
- #seat21 {
+ .seat21 {
 	position: absolute;
 	top:370px;
 	left:530px;
  }
- #seat22 {
+ .seat22 {
 	position: absolute;
 	top:370px;
 	left:660px;
  }
- #seat23 {
+ .seat23 {
 	position: absolute;
 	top:510px;
 	left:540px;
  }
- #seat24 {
+ .seat24 {
 	position: absolute;
 	top:510px;
-	left:650px;
+	left:660px;
  }
   .blockPeople { 
     width: 390px; 
